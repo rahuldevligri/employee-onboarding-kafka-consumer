@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: KafkaConsumer
+  profiles:
+    active: ${ENV:local}
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/security_central_service?timezone=UTC}
+    username: postgres
+    password: 4642
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        hbm2ddl:
+          auto: none
+  main:
+    banner-mode: off
+
+server:
+  port: 8080
+
+kafka-config:
+  topics:
+    employee-created:
+      name: ${EMPLOYEE_CREATED_KAFKA_TOPIC_NAME:employee_created_dev}
+      partitions: ${EMPLOYEE_CREATED_KAFKA_PARTITION_COUNT:3}
+      replicationFactor: ${EMPLOYEE_CREATED_KAFKA_REPLICATION_FACTOR:1}
+      group: ${EMPLOYEE_CREATED_KAFKA_CONSUMER_GROUP_ID:dev-ems-security-central-consumer}
