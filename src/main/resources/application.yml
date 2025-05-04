@@ -24,7 +24,7 @@ server:
 kafka-config:
   topics:
     employee-created:
-      name: ${EMPLOYEE_CREATED_KAFKA_TOPIC_NAME:employee_created_dev}
+      name: ${EMPLOYEE_CREATED_KAFKA_TOPIC_NAME:employee_created_kafka}
       partitions: ${EMPLOYEE_CREATED_KAFKA_PARTITION_COUNT:3}
       replicationFactor: ${EMPLOYEE_CREATED_KAFKA_REPLICATION_FACTOR:1}
-      group: ${EMPLOYEE_CREATED_KAFKA_CONSUMER_GROUP_ID:dev-ems-security-central-consumer}
+      group: ${EMPLOYEE_CREATED_KAFKA_CONSUMER_GROUP_ID:employee-onboard-kafka-consumer}
